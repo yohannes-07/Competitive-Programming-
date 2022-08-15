@@ -1,0 +1,10 @@
+def domino_pilling(m, n):
+    if 1<= n <= 16 and 1 <= m <= n:
+        max_piece = (m * n) // 2
+        return max_piece
+    else:
+        print("incorrect input")
+    
+m = int(input())
+n = int(input())
+print(domino_pilling(m, n))
