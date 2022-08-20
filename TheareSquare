@@ -1,0 +1,18 @@
+import sys
+def theatreSquare(nums):
+    
+    if nums[1] % nums[2] != 0:
+        y = nums[1] // nums[2] + 1
+    else:
+        y = nums[1] // nums[2]
+    
+    if nums[0] % nums[2] != 0:
+        x = nums[1] // nums[2] + 1
+         
+    else:
+        x = nums[1] // nums[2]
+        
+    print (x * y)
+    
+nums = list(map(int, input().split(" ")))
+theatreSquare(nums)
