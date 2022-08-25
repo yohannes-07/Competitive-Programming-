@@ -6,9 +6,9 @@ class Solution:
         half_size ,output = n// 2, 0
         
         for i in vals:
-            half_size -= i
+            n -= i
             output += 1
             
-            if half_size <= 0:
+            if n <= half_size:
                 return output
         return output
