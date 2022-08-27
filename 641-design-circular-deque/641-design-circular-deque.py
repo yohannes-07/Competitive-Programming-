@@ -1,8 +1,8 @@
 class Node:
 
-    def __init__(self,val):
+    def __init__(self,data):
 
-        self.val = val
+        self.data = data
 
         self.next = None
 
@@ -20,9 +20,9 @@ class MyCircularDeque:
         self.length = 0
       
 
-    def insertFront(self, value):
+    def insertFront(self, data):
 
-        node = Node(value)
+        newnode = Node(data)
 
         if self.isFull():
 
@@ -32,22 +32,22 @@ class MyCircularDeque:
 
             if self.head is None:
 
-                self.head = self.tail = node
+                self.head = self.tail = newnode
 
             else:
 
-                node.next = self.head
+                newnode.next = self.head
 
-                self.head.prev = node
+                self.head.prev = newnode
 
-                self.head = node
+                self.head = newnode
 
             self.length += 1
 
             return True
 
-    def insertLast(self, value):
-        node = Node(value)
+    def insertLast(self, data):
+        newnode = Node(data)
 
         if self.isFull():
 
@@ -56,15 +56,15 @@ class MyCircularDeque:
         else:
 
             if self.head is None:
-                self.head = self.tail = node
+                self.head = self.tail = newnode
 
             else:
 
-                node.prev = self.tail
+                newnode.prev = self.tail
 
-                self.tail.next = node
+                self.tail.next = newnode
 
-                self.tail = node
+                self.tail = newnode
 
             self.length += 1
 
@@ -110,11 +110,11 @@ class MyCircularDeque:
 
             else:
 
-                node = self.tail.prev
+                last_node = self.tail.prev
 
-                node.next = None
+                last_node.next = None
 
-                self.tail = node
+                self.tail = last_node
 
             self.length -= 1
 
@@ -122,11 +122,11 @@ class MyCircularDeque:
 
     def getFront(self):
 
-        return -1 if self.head is None else self.head.val    
+        return -1 if self.head is None else self.head.data   
 
     def getRear(self):
 
-        return -1 if self.tail is None else self.tail.val
+        return -1 if self.tail is None else self.tail.data
 
     def isEmpty(self):
 
