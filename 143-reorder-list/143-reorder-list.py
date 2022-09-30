@@ -11,14 +11,14 @@ class Solution:
             left = left.next
             right = right.next.next
         
-        prev, current = None, left.next
-        left.next = None
+        prev, current, left.next = None, left.next, None
+         
         
         while current:
-            temp = current.next
-            current.next = prev
-            prev = current
-            current = temp
+            
+            temp, current.next = current.next, prev
+            prev, current = current, temp
+           
         
         start1 = head
         start2 = prev
@@ -26,6 +26,6 @@ class Solution:
         while start2:
             temp1, temp2 = start1.next, start2.next
             start1.next = start2
-            start2.next = temp1
-            start1 = temp1
-            start2 = temp2
+            start2.next = temp1 
+            start1, start2  = temp1, temp2 
+            
