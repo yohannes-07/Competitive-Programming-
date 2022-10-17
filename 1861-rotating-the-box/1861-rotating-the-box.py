@@ -18,6 +18,8 @@ class Solution:
                 elif r[col] == "*":                    
                     emptySpace = col - 1  
                     
+                else:
+                    continue
                    
       
         res =[[row[i] for row in box][::-1] for i in range(n)]
