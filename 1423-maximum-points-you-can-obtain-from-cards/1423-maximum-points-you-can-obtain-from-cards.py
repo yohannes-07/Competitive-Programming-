@@ -1,6 +1,6 @@
 class Solution:
     def maxScore(self, cardPoints: List[int], k: int) -> int:
-        min_size = len(cardPoints) - k
+        minSumsize = len(cardPoints) - k
         
         minSum = float('inf')
         left = curr = 0
@@ -8,10 +8,10 @@ class Solution:
         for right, val in enumerate(cardPoints):
             curr += val
             
-            if right - left + 1 > min_size:
+            if right - left + 1 > minSumsize:
                 curr -= cardPoints[left]
                 left += 1
-            if right - left + 1 == min_size:    
+            if right - left + 1 == minSumsize:    
                 minSum = min(minSum, curr)
 				
         return sum(cardPoints) - minSum
