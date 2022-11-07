@@ -1,8 +1,8 @@
 class Solution:
     def targetIndices(self, nums: List[int], target: int) -> List[int]:
-        sortedNums = sorted(nums)
-        output = []
-        for i, j in enumerate(sortedNums):
-            if j == target:
-                output.append(i)
-        return output
+        res = []
+        for i, v in enumerate(sorted(nums)):
+            if v == target:
+                res.append(i)
+                
+        return res
