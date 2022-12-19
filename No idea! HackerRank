@@ -1,0 +1,14 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n = input().split()
+arr = input().split()
+A = set(input().split())
+B = set(input().split())
+score = 0   
+for num in arr:
+    if num in A :
+        score += 1
+    elif num in B :
+        score -= 1
+    else:
+        continue 
+print(score)
