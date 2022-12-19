@@ -1,0 +1,12 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+k = int(input())
+rooms = list(map(int, input().split()))
+firstSet = secondSet = set()
+for r in rooms:
+    if r in firstSet:
+        secondSet.discard(r)
+    else:
+        firstSet.add(r)
+        secondSet.add(r)
+ans = list(secondSet)
+print(ans[0])
