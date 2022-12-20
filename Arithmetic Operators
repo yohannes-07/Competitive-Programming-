@@ -1,0 +1,35 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+def pillingUp(n, blocks):
+    mstack = []
+    i, j = 0, len(blocks) - 1
+    while i <= j:
+        if blocks[j] >= blocks[i]:
+            if mstack and blocks[j] <= mstack[-1]:
+                mstack.append(blocks[j])
+                j -= 1
+            elif not mstack:
+                mstack.append(blocks[j])
+                j -= 1
+            else:
+                print("No")
+                return
+        else:
+            if mstack and blocks[i] <= mstack[-1]:
+                mstack.append(blocks[i])
+                i += 1
+            elif not mstack:
+                mstack.append(blocks[i])
+                i += 1
+            else:
+                print("No")
+                return
+   
+    print("Yes")
+        
+t = int(input())
+
+for i in range(t):
+    n = int(input())
+    blocks = list(map(int, input().split()))
+    pillingUp(n, blocks)
