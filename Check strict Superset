@@ -1,0 +1,27 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+setA = set(list(map(int, input().split())))
+n = int(input())
+n_sets = []
+for i in range(n):
+    sets = set(list(map(int, input().split())))
+    n_sets.append(sets)
+flag = False
+for sets in n_sets:
+    if (len(sets) > len(setA)):
+        print(False)
+        flag = True
+        break
+        
+    for num in sets:
+        if num not in setA:
+            print(False)
+            flag = True
+            break
+    if flag:
+        break
+   
+if not flag:
+    print(True)
+
+        
+        
