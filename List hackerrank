@@ -1,0 +1,26 @@
+if __name__ == '__main__':
+    N = int(input())
+    given_list=[]
+    commands=[]
+    i = 0
+    while i in range(N):
+        command=input().split()
+        commands += [command]
+        i += 1
+        
+    for i in range(N):
+        if commands[i][0]=='print':
+           print(given_list)
+        elif commands[i][0]=='pop':
+            given_list.pop()
+        elif commands[i][0]=='reverse':
+            given_list.reverse()
+        elif commands[i][0]=="insert"   : 
+           given_list.insert(int(commands[i][1]),int(commands[i][2]))
+        elif commands[i][0]=='remove':
+            given_list.remove(int(commands[i][1]))
+        elif commands[i][0]=='append':
+            given_list.append(int(commands[i][1]))
+        elif commands[i][0]=='sort':
+            given_list.sort()
+       
