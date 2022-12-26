@@ -19,5 +19,6 @@ class Solution:
                     res = max(res, perimeter)
                 
             i += 1
+            
         return res
             
