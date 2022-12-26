@@ -1,0 +1,20 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import defaultdict
+lengths = list(map(int, input().split()))
+
+groupA = defaultdict(list)
+for i in range(lengths[0]):
+    groupA[input()].append(i + 1) 
+
+groupB = []
+for j in range(lengths[1]):
+    groupB.append(input())
+
+
+for char in groupB:
+    if char in groupA:
+        ans = list(map(str, groupA[char]))
+        print(" ".join(ans))
+    else:
+        print(-1)
+        
