@@ -1,0 +1,33 @@
+n = int(input())
+for i in range(n):
+    string =input().split()
+    
+    if string[0] == string[1]:
+        print("=")
+
+    elif (string[0] == "M" and string[1][-1] == "S") or (string[0][-1] == "L" and string[1] == "M"):
+        print(">")
+    
+    elif (string[0] == "M" and string[1][-1] == "L")  or (string[0][-1] == "S" and string[1] == "M"):
+        print("<")
+
+    elif string[0][-1] == "S" and string[1][-1] == "S":
+        if len(string[0]) < len(string[1]):
+            print(">")
+
+        if len(string[0]) > len(string[1]):
+            print("<")
+
+    elif string[0][-1] == "L" and string[1][-1] == "L":
+        if len(string[0]) < len(string[1]):
+            print("<")
+
+        if len(string[0]) > len(string[1]):
+            print(">")
+
+    elif string[0][-1] == "S" and string[1][-1] == "L":
+        print("<")
+        
+    elif string[0][-1] == "L" and string[1][-1] == "S":
+          print(">")
+    
