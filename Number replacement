@@ -1,0 +1,24 @@
+n = int(input())
+for i in range(n):
+    length = int(input())
+    
+    arr =list(map(int, input().split()))
+    string =input()
+    
+    dic = {}
+    transformable = True
+    
+    for i in range(length):
+        value = arr[i] 
+        if value in dic:
+             
+            if dic[value] != string[i]:
+                transformable = False
+                print("NO")
+                break
+
+        else:
+            dic[value] = string[i]
+            
+    if transformable:
+        print("YES")
