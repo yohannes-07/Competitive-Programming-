@@ -2,14 +2,17 @@ class Solution:
     def onesMinusZeros(self, grid):
         m = len(grid)
         n = len(grid[0])
+    
         onesRows = [0] * m
         onesCols = [0] * n
         
         for i in range(m):
-           # onesRows[i] = sum(grid[i])
             
+            #calclulate the no of ones in each row
+            onesRows[i] = sum(grid[i])
             for j in range(n):
-                onesRows[i] += grid[i][j]
+           
+                #calculate the no on ones in each column
                 onesCols[j] += grid[i][j] 
                 
        
@@ -17,10 +20,10 @@ class Solution:
         
         for i in range(m):
             for j in range(n):
-                zerosRow = n - onesRows[i]
-                zerosCol = m - onesCols[j]
-               
-                diff[i][j] = (onesRows[i] + onesCols[j] - zerosRow - zerosCol)
-              
                 
+                zerosRow = n - onesRows[i]# no of zeros in each  row
+                zerosCol = m - onesCols[j]# no of zeros in each column
+            
+                diff[i][j] = (onesRows[i] + onesCols[j] - zerosRow - zerosCol)
+               
         return diff
