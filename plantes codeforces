@@ -1,0 +1,28 @@
+from collections import Counter
+n = int(input())
+for i in range(n):
+    first_arr = list(map(int, input().split()))
+    planets = list(map(int, input().split()))
+
+    n = first_arr[0]
+    c = first_arr[1]
+    res = 0
+    
+    count = Counter(planets)
+    if c == 1:
+        res = len(count.values())
+    else:
+
+        for value in count.values():
+            if value == 1:
+                res += 1
+            else:
+                if c <= value:
+                    res += c
+                else:
+                    res += value
+                    
+    print(res)
+        
+
+
