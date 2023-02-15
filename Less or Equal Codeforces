@@ -1,0 +1,13 @@
+n, k = list(map(int, input().split()))
+arr = list(map(int, input().split()))
+if n == k:
+    num = arr[-1]
+else:
+    arr = [1]+sorted(arr)
+    if arr[k] != arr[k+1]:
+        num = arr[k]
+        
+    else:
+        num = -1
+
+print(num)
