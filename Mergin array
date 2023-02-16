@@ -1,0 +1,28 @@
+n, m = list(map(int, input().split()))
+firstArr = list(map(int, input().split()))
+secondArr = list(map(int, input().split()))
+
+mergedArr = [] 
+
+first, second = 0, 0
+while first < len(firstArr) and second < len(secondArr):
+
+    if firstArr[first] >= secondArr[second]:
+        mergedArr.append(secondArr[second])
+        second += 1
+
+    else:
+        mergedArr.append(firstArr[first])
+        first += 1
+
+
+mergedArr.extend(firstArr[first:])
+mergedArr.extend(secondArr[second:])
+
+for num in mergedArr:
+    print(str(num), end=" ")
+
+
+
+
+
