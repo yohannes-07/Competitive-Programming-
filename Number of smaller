@@ -1,0 +1,24 @@
+n, m = list(map(int, input().split()))
+firstArr = list(map(int, input().split()))
+secondArr = list(map(int, input().split()))
+
+res = [] 
+i = 0
+for j in range(m):
+
+    while i < n and firstArr[i] <  secondArr[j]:
+        i += 1
+
+    
+    res.append(i)
+       
+
+
+
+for num in res:
+    print(str(num), end=" ")
+
+
+
+
+
