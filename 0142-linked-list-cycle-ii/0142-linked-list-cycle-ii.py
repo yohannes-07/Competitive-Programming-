@@ -15,7 +15,7 @@ class Solution:
                 
         if not fast or not fast.next: return None   
         
-        while slow:
+        while head:
             if head == slow:
                 return slow
             
