@@ -14,6 +14,7 @@ class BrowserHistory:
     def visit(self, url: str) -> None:
         newWeb = Node(url)
         self.curr.next = newWeb
+        
         newWeb.prev = self.curr
         self.curr = newWeb
 
