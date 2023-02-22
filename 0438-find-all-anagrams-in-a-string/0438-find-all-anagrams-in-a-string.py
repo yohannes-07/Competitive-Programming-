@@ -19,9 +19,9 @@ class Solution:
             scount[s[left]] -= 1
             
             if scount[s[left]] == 0:
-                scount.pop(s[left])
-                
+                scount.pop(s[left])    
             left += 1
+            
             if scount == pcount:
                 res.append(left)
                 
