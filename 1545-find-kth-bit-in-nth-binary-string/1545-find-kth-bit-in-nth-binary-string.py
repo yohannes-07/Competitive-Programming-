@@ -1,27 +1,26 @@
-class Solution(object):
-    def findKthBit(self, n, k):
+class Solution:
+    def findKthBit(self, n: int, k: int) -> str:
         
-        
-        
-        if n==1:
-            return "0"
-        dict = {"0": "1",
-            "1": "0"}
-        m=2**(n-1)
-        if k == 1:
-            return "0"
-        
-
-        if k<m:
-
-            return self.findKthBit(n-1,k)
-
-        
-        if k==m:
-            return "1"
-
-        return dict[self.findKthBit(n-1,2*m-k)]
-       
-
+        def helper(n, k):
+            if n == 1:
+                return "0"
+            
+            res = helper(n-1, k)
+            inverted = list(res)
+          
+            for i in range(len(inverted)):
+                if int(inverted[i]) == 0:
+                    inverted[i] = "1"
+                    
+                else:
+                    inverted[i] = "0"
+                    
+            inverted = inverted[::-1]
+            reverse = "".join(inverted)
+                  
+            return res + "1" + reverse
+            
+        ans =  helper(n, k)
+        return ans[k-1]
       
         
