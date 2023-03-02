@@ -1,19 +1,23 @@
 class Solution:
     def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
-        lengthOfTrip = [ 0 for _ in range(1001)]
         
-        # Update passenger change for each trip
-        for trip, i, j in trips:
-            lengthOfTrip[i] += trip # Increment when passenger is on board
-            lengthOfTrip[j] -= trip # decrement when they depart
-      
-        carLoad = 0
-        # Count total passenger for each bus top
-        # we have the count array, we perform a line sweep from 0 to 1000 and track its total
-        for i in range( len(lengthOfTrip) ):
-            carLoad += lengthOfTrip[i] 
+        # maximum distance passengers go with their car 
+        passengers = [0] * (1001)
+        
+        # pick and drop passengers from start and at end
+        # of each trip
+        for no_of_passengers, start, end in trips:
+            passengers[start] += no_of_passengers
+            passengers[end] -= no_of_passengers
             
-            if carLoad > capacity: # Reject when the car is overloaded somewhere
-                return False 
-            
-        return True # Accept only if all trip is safe
+        max_passengers = 0
+        
+        # cumulative sum...if toatal passengers overpass the capacity
+        # return false else return true
+        for no_of_passengers in passengers:
+            max_passengers +=  no_of_passengers
+            if max_passengers > capacity:
+                return False
+        
+        return True
+        
