@@ -10,9 +10,6 @@ class Solution:
             if summ - goal in prefix:
                 res += prefix[summ - goal]
                 
-            if summ in prefix:
-                prefix[summ ] += 1
-            else:
-                prefix[summ] = 1
-                
+            prefix[summ] = prefix.get(summ, 0) + 1
+            
         return res
