@@ -6,7 +6,6 @@ class Solution:
             mid = left + (right - left) // 2
             
             if arr[mid - 1] <= arr[mid] and arr[mid] >= arr[mid + 1]:
-                print(left, mid, right)
                 return mid
             
             elif  arr[mid] < arr[mid - 1]:
