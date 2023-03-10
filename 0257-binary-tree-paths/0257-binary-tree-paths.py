@@ -10,9 +10,7 @@ class Solution:
         res = []
         def backtrack(root, path):
             
-            if not root:
-                return 
-            
+
             if path:
                 path += "->" + str(root.val)
             else:
