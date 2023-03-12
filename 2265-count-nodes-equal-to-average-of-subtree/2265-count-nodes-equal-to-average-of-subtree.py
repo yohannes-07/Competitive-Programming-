@@ -15,11 +15,11 @@ class Solution:
                 return [0, 0]
       
             count = 1
-            leftCount = dfs(root.left)
-            rightCount = dfs(root.right)
+            left = dfs(root.left)
+            right = dfs(root.right)
             
-            summ = root.val + leftCount[1] + rightCount[1]
-            count += leftCount[0] + rightCount[0]
+            summ = root.val + left[1] + right[1]
+            count += left[0] + right[0]
             
             if root.val == int(summ/count):
                 ans += 1
