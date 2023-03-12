@@ -7,6 +7,7 @@
 class Solution:
     def findMode(self, root: Optional[TreeNode]) -> List[int]:
         duplicate_elems = []
+        
         def dfs(root):
             if not root:
                 return 
