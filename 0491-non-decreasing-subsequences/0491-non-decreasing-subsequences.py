@@ -4,12 +4,8 @@ class Solution:
         hashSet = set()
         
         def backtrack(start, acc):
-            if start >= len(nums):
-                
-                if tuple(acc) not in hashSet and  len(acc) >= 2:
-                    res.append(acc[:])
-                    hashSet.add(tuple(acc))
-                    
+            if start > len(nums):
+                      
                 return
             
             if len(acc) >= 2 :
