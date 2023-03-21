@@ -9,6 +9,7 @@ class Solution:
         
         res = 0
         dic = {0:1}
+        
         def dfs(root, acc):
             nonlocal res
             
@@ -16,12 +17,10 @@ class Solution:
                 return 
             
             acc += root.val
-            #print("before", acc)
             res += dic.get(acc - targetSum, 0 )
-            if  acc in dic:
-                dic[acc] +=  1
-            else:
-                dic[acc] = 1
+            
+            
+            dic[acc] = dic.get(acc, 0) + 1
             
             dfs(root.left, acc)
             dfs(root.right, acc)
