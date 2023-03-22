@@ -16,7 +16,7 @@ class Solution:
                 return
             
             
-            for i in range(start, min(start + 3, len(s))):
+            for i in range(start, len(s)):
                 
                 subIp = s[start: i + 1]
                 
