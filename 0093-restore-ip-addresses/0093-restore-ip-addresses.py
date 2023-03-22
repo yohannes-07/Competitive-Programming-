@@ -21,7 +21,7 @@ class Solution:
                 subIp = s[start: i + 1]
                 
                 if int(subIp) > 255 :
-                    return
+                    break
                 
                 acc.append(subIp)
                 
