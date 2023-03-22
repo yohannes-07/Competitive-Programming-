@@ -21,16 +21,16 @@ class Solution:
                 subIp = s[start: i + 1]
                 
                 if int(subIp) <= 255 :
-             
-
+            
                     acc.append(subIp)
 
                     backtrack(i + 1, acc)
-
+                 
                     acc.pop()
 
                     if  s[start] == "0":
-                        return
+                       
+                        break
                 
         backtrack(0, [])
              
