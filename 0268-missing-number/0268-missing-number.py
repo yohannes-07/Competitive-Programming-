@@ -1,13 +1,23 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         n = len(nums)
-        dic = {}
         
-        #put nums arrary value in dic
-        for num in nums:
-            dic[num] = 1
+        for i in range(n):
+            curr = nums[i]
             
-        # check 0 to n(including n) if each num exits in dic....if not return that num
-        for num in range(n + 1): 
-            if num not in dic:
-                return num
+            if curr >= n:
+                continue
+            
+            while curr != i:
+                nums[curr], nums[i] = nums[i], nums[curr]
+                
+                curr = nums[i]
+                
+                if curr >= n:
+                    break
+            
+        for i in range(n):
+            if nums[i] != i:
+                return i
+            
+        return n
