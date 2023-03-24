@@ -8,13 +8,11 @@ class Solution:
             if curr >= n:
                 continue
             
-            while curr != i:
+            while  curr < n and curr != i:
                 nums[curr], nums[i] = nums[i], nums[curr]
                 
                 curr = nums[i]
-                
-                if curr >= n:
-                    break
+                   
             
         for i in range(n):
             if nums[i] != i:
