@@ -7,7 +7,7 @@ class Solution:
             
             j  = i
             while j > 0:
-                if j % 2:
+                if j & 1:
                     count += 1
                 j = j >> 1
             
