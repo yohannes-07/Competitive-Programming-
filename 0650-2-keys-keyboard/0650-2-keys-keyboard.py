@@ -1,12 +1,19 @@
 class Solution:
     def minSteps(self, n: int) -> int:
-        count = 0
-        i = 2
-        while n != 1:
-            if n%i == 0:
-                n //= i
-                count += i
-                i = 2
-            else:
-                i += 1
-        return count
+        res = 0
+        d = 2
+        
+        while d * d <= n:
+            
+            while n % d == 0:
+                res += d
+                
+                n //= d
+                
+            d += 1
+            
+        if n > 1:
+            res += n
+            
+        return res
+        
