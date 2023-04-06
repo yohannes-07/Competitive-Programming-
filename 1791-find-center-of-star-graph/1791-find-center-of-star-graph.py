@@ -1,6 +1,6 @@
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:
-        n = len(edges)
+       
         freq = defaultdict(int)
         
         for u, v in edges:
