@@ -1,22 +1,45 @@
 class Solution:
     def countSubIslands(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
-        m, n, count = len(grid2), len(grid2[0]), 0
-    
-        def getIsland(i: int, j: int, b: int): # b is like bool
-            grid2[i][j] = 0
-
-            if i+1 < m and grid2[i+1][j]: # down
-                b = getIsland(i+1, j, b)
-            if j+1 < n and grid2[i][j+1]: # right
-                b = getIsland(i, j+1, b)
-            if i > 0 and grid2[i-1][j]: # up
-                b = getIsland(i-1, j, b)
-            if j > 0 and grid2[i][j-1]: # left
-                b = getIsland(i, j-1, b)
-            return grid1[i][j] & b
-
+        m, n = len(grid1), len(grid1[0])
+        
+        def inBound(row, col):
+            return 0 <= row < m and 0 <= col < n
+        
+        
+        def dfs(row, col):
+            if not inBound(row, col):
+                return True
+            
+            if grid1[row][col] != 1:
+                return False
+            
+            res = True
+            grid2[row][col] = 0
+            
+            if inBound(row + 1, col) and grid2[row + 1][col]:
+                res = dfs(row + 1, col) and res
+                
+            if inBound(row - 1, col ) and grid2[row - 1][col]:
+                res = dfs(row - 1, col) and res
+                
+            if inBound(row , col + 1) and  grid2[row][col + 1]:
+                res = dfs(row, col + 1) and res
+                
+            if inBound(row , col- 1 ) and grid2[row][col - 1]:
+                res = dfs(row, col - 1) and res
+            
+            return res
+            
+            
+        res = 0
+        
         for i in range(m):
             for j in range(n):
-                if grid2[i][j]:
-                    count += getIsland(i, j, 1)
-        return count
+                if grid2[i][j] == 1:
+                    
+                    temp = dfs(i, j)
+                    if temp: 
+                        res += 1
+                    
+                    
+        return res
