@@ -1,6 +1,7 @@
 class Solution:
     def solve(self, grid: List[List[str]]) -> None:
      
+        #reverse thinking...find all the grid except the unsurrounded region
         m, n = len(grid), len(grid[0])
         
         def inBound(row, col):
