@@ -6,22 +6,25 @@
 #         self.right = right
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root: return []
         
         res = []
-        def dfs(root, level):
-            
-            if not root:
-                return 
-            
-            #check if ther is empty array inside res
-            # to put new  values with the same level
-            if len(res) < level:
-                res.append([])
-
-            res[level -1].append(root.val)
-            dfs(root.left, level + 1)
-            dfs(root.right, level + 1)
+        queue = deque([root])
         
-        dfs(root, 1)
-        
+        while queue:
+            length = len(queue)
+            level = []
+            
+            for _ in range(length):
+                curr = queue.popleft()
+                level.append(curr.val) 
+                
+                if curr.left: queue.append(curr.left)
+                if curr.right: queue.append(curr.right)
+                 
+                
+            res.append(level[:])
+            
+            
+                
         return res
