@@ -17,7 +17,7 @@ class Solution:
            
             
             for neigbhour in graph[node]:
-                if neigbhour not in visited and  not color[neigbhour]:
+                if neigbhour not in visited :
                     visited.add(neigbhour)
                     
                     color[neigbhour] = -1 * color[node]
