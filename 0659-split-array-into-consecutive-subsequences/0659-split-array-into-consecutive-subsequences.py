@@ -8,6 +8,9 @@ class Solution:
             val, size = heapq.heappop(heap)
             
             while val + 1 < num:
+                
+                # in any case there is a subesequence with length less than 3 
+                # return false as the current num can't be its next consequetive 
                 if size < 3:
                     return False
                     
