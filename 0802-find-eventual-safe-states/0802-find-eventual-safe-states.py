@@ -3,8 +3,11 @@ class Solution:
         color = [0 for i in range(len(graph))]
         order = []
         
+        # add a node to the order arr if you're not going to find a cyvle 
+        # starting from that node
         def topSort(node):
             
+            # make it fast(pruning)
             if color[node] == 2:
                 return True
             
