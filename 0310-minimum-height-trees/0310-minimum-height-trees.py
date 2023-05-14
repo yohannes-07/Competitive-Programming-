@@ -1,5 +1,9 @@
 class Solution:
     def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
+        
+        # we can get at most two min height trees
+        # if n is odd there is 1 ans , the middle node
+        # if n is even  it can be 1 or 2, the middle nodes
         if n == 1: return [0]
         
         graph = defaultdict(list)
