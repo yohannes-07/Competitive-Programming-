@@ -26,24 +26,18 @@ class Solution:
             if size[xrep] <= size[yrep]:
                 rep[xrep] = yrep
                 
-                rep_cost[yrep] = min(rep_cost[yrep], cost)
+                rep_cost[yrep] = min(rep_cost[yrep], cost,rep_cost[xrep] )
                 size[yrep] += size[xrep]
                 
             else:
                 rep[yrep] = xrep
-                rep_cost[xrep] = min(rep_cost[xrep], cost)
+                rep_cost[xrep] = min(rep_cost[xrep], cost, rep_cost[yrep] )
                 size[xrep] += size[yrep]
                 
         for a, b, cost in roads:
             union(a, b, cost)
 
-        rep_cost_1 = find(1)
-
-        min_path = float("inf")
-
-        for city, cost in rep_cost.items():
-            if find(city) == rep_cost_1:
-                min_path = min(min_path, cost)
-
-        return min_path
+        ones_parent = find(1)
+        return rep_cost[ones_parent]
+        
 
