@@ -10,10 +10,11 @@ class Solution:
         for diff, idx in temp:
             if cityA < n//2:
                 summ += costs[idx][0]
+                cityA += 1
                 
             else:
                 summ += costs[idx][1]
                 
-            cityA += 1
+            
                 
         return summ
