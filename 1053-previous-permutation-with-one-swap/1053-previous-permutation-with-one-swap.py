@@ -1,7 +1,6 @@
 class Solution:
     def prevPermOpt1(self, arr: List[int]) -> List[int]:
-        if arr == sorted(arr): return arr
-        
+       
         n = len(arr)
         
         def swap(i, n):
@@ -15,4 +14,5 @@ class Solution:
         for i in range(n-2, -1, -1):
             if arr[i] > arr[i + 1]:
                 if swap(i, n): return arr
-            
+          
+        return arr
