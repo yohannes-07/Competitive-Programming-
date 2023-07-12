@@ -13,5 +13,4 @@ class Solution:
             
             if dp[i] >= n - 1:
                 return True
-        
         return dp[n - 2] >= n - 1
