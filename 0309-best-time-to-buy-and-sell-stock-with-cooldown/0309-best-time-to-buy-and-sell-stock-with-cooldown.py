@@ -1,23 +1,24 @@
 class Solution:
-    def f(self,ind,buy,n,price,dp):
-        
-        if ind>=n:
-            return 0
-        
-        if dp[ind][buy]!=-1:
-            return dp[ind][buy]
-        
-        if (buy==1):
-            dp[ind][buy]=max(-price[ind]+self.f(ind+1,0,n,price,dp),0+self.f(ind+1,1,n,price,dp))
-            
-        else: 
-            dp[ind][buy]=max(price[ind]+self.f(ind+2,1,n,price,dp),0+self.f(ind+1,0,n,price,dp))
-            
-        return dp[ind][buy]
-    
     def maxProfit(self, prices: List[int]) -> int:
+        memo , n= {}, len(prices)
         
-        n=len(prices)
-        dp=[[-1 for i in range(2)]for j in range(n)]
+        #turn 1 for buying and 0 for selling
         
-        return self.f(0,1,n,prices,dp)
+        def dp(index, turn):
+            if index >= n: return 0
+            if (index, turn) in memo: 
+                return memo[(index, turn)]
+            
+            if turn == 1:
+                cooldown = dp(index + 1, turn)
+                buying =  dp(index + 1, (turn + 1) % 2) - prices[index]
+                memo[(index, turn)] = max(cooldown, buying)
+            
+            else:
+                cooldown = dp(index + 1, turn)
+                selling = prices[index] + dp(index + 2,(turn + 1) % 2)
+                memo[(index, turn)] = max(cooldown, selling)
+            
+            return memo[(index, turn)]
+            
+        return dp(0, 1)
