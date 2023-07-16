@@ -1,7 +1,6 @@
 class Solution:
     def closestPrimes(self, left: int, right: int) -> List[int]:
         primes = [True for i  in range(right + 1)]
-        
         primes[0] = primes[1] = False
         
         i = 2
