@@ -6,6 +6,7 @@ class Solution:
         
         def dp(index, turn):
             if index >= n: return 0
+            
             if (index, turn) in memo: 
                 return memo[(index, turn)]
             
