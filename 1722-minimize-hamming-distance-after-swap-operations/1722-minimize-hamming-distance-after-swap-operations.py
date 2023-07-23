@@ -32,15 +32,17 @@ class Solution:
 
         for a,b in allowedSwaps:
             union(a,b)
-        
+
         ans = 0
         m = defaultdict(set)
         for i in range(n):
             m[find(i)].add(i)
-        
+            
+   
         for indices in m.values():
             A = Counter([source[i] for i in indices])
             B = Counter([target[i] for i in indices])
+            
             ans += sum((A - B).values())
             
         return ans
