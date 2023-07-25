@@ -26,6 +26,7 @@ class Solution:
         for i in range(1, len(nums)):
             if self.nums[i] > self.nums[i - 1]:
                 res = max(res, 1 + self.recurse(i, 'positive'))
+                
             elif self.nums[i] < self.nums[i - 1]:
                 res = max(res, 1 + self.recurse(i, 'negative'))
 
