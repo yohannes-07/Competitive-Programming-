@@ -1,18 +1,26 @@
 class Solution:
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
-        row=len(matrix)
-        col=len(matrix[0])
-
-        for i in range(1,row):
-            for j in range(col):
-
-                if j==0:
-                    matrix[i][j]+=min(matrix[i-1][j+1],matrix[i-1][j])
-
-                elif j==col-1:
-                    matrix[i][j]+=min(matrix[i-1][j-1],matrix[i-1][j])
-
-                else:
-                    matrix[i][j]+=min(matrix[i-1][j-1],matrix[i-1][j],matrix[i-1][j+1])
-
-        return min(matrix[-1])
+        rows, cols = len(matrix), len(matrix[0])
+        prev = [0] * cols
+        
+        for row in range(rows):
+            curr = matrix[row].copy() 
+            for col in range(cols):   
+                
+                curr[col] = curr[col] + prev[col]
+                
+                if col - 1 >= 0:
+                    curr[col] = min(curr[col], matrix[row][col] + prev[col - 1]) 
+                
+                if col + 1 < cols:
+                    curr[col] = min(curr[col], matrix[row][col] + prev[col + 1]) 
+                    
+            prev = curr
+            
+        return min(curr)
+                
+                
+            
+            
+        
+        
