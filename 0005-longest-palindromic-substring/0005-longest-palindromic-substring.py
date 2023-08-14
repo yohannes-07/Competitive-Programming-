@@ -6,8 +6,10 @@ class Solution:
         maxLen = startIdx = 0
         for i in range(n - 1, -1, -1):
             for j in range(i, n):
+                
                 if i == j:
                     dp[i][j] = True
+                    
                 elif s[i] == s[j]:
                     dp[i][j] = (i+1 == j) or dp[i + 1][j - 1]
 
