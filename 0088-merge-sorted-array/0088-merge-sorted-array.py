@@ -1,32 +1,28 @@
 class Solution:
-    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
-      
-        if m and not n:
-            return nums1
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None: 
+        if n == 0: return nums1
+    
         
-        k = len(nums1) -1 # pointer to insert nums in order
-        m = m-1
-        n = n-1
+        left, right, k = m - 1, n - 1, len(nums1)- 1
         
-        #iterate backward: compare the last elements of both arrays and insert at the last zero of nums1
-        while n >= 0:
-            if nums1[m] > nums2[n]:
-                nums1[k] = nums1[m]
-                m -= 1
+        while left >= 0 and right >= 0:
+            
+            if nums2[right] >= nums1[left]:
+                nums1[k] = nums2[right]
+                right -= 1
                 
             else:
-                nums1[k] = nums2[n]
-                n -= 1
+                nums1[k] = nums1[left]
+                left -= 1
+                
             k -= 1
             
-            #check if some nums2 elements are not visited and add them to nums1
-            while n >= 0 and m < 0:
-                nums1[k] = nums2[n]
-                n -= 1
-                k -= 1
+        while  right >= 0:
+            nums1[k] = nums2[right]
+            right -= 1
+            k -= 1
+        
                 
-
-
-                
-                
+                        
+        
         
