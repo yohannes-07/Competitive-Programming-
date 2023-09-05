@@ -1,8 +1,6 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
         n = len(height)
-        if n <= 2: return 0
-        
         left, right = 1, n - 1
         left_max, right_max = height[0], height[-1]
         trap_capacity = 0
