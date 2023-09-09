@@ -1,11 +1,15 @@
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        short_string = min(strs,key=len)
-        for i, char in enumerate(short_string):
+        longest_common_prefix = ""
+        min_len_word = min(strs)
+        max_len_word = max(strs)
+        
+        
+        for i in range(len(min_len_word)):
+            if min_len_word[i] != max_len_word[i]:
+                return longest_common_prefix
             
-            for word in strs:
-                if word[i] != char:
-                    
-                    return short_string[:i]
-                
-        return short_string 
+            longest_common_prefix += min_len_word[i]
+            
+            
+        return longest_common_prefix
