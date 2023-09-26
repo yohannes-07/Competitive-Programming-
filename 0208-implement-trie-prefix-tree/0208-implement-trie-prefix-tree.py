@@ -28,11 +28,8 @@ class Trie:
                 
             curr = curr.children[char]
             
-        if curr.isEndWord:
-            return True
-        
-        return False
-
+        return curr.isEndWord
+    
     def startsWith(self, prefix: str) -> bool:
         curr = self.root
         
