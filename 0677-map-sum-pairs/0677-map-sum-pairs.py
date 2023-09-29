@@ -16,7 +16,6 @@ class MapSum:
         
         for char in key:
             if char not in curr.children:
-                overrideExistingKey = False
                 curr.children[char] = TrieNode()
                 curr = curr.children[char]
                 break
