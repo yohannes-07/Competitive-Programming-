@@ -1,29 +1,38 @@
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
-        # build graph using hash table for saving time
-        graph = defaultdict(list)      # key is 'source', value is '(target, cost)'
-        for edge in times:
-            graph[edge[0]].append((edge[1], edge[2]))
+        graph = [None] * (n+1)
         
-        # Best-First-Search
-        heap = [(0,k)]
+        for u, v, w in times:
+            if graph[u]:
+                graph[u].append((v, w))
+                
+            else:
+                graph[u] = [(v, w)]
+            
+        distances = {node:float("inf") for node in range(1, n + 1)}
+        distances[k] = 0
         visited = set()
         
-        res_cost = 0
+        heap = [(0, k)]
+
         while heap:
-            cost, node = heapq.heappop(heap)
+            curr_dist, curr_node = heapq.heappop(heap)
             
-            # add neighbors to heap
-            if node not in visited:
-                res_cost = cost     # only save the cost from node not visited
-                visited.add(node)
+            if curr_node in visited:
+                continue
                 
-                for target, edge_cost in graph[node]:    # get the edges of node
-                    if target not in visited:  # ignore visited neighbor
-                        heapq.heappush(heap, (cost+edge_cost, target))
+            visited.add(curr_node)
+            
+            if graph[curr_node]:
+                for neigh, weight in graph[curr_node]:
+                    distance  = curr_dist + weight
+
+                    if distance < distances[neigh]:
+                        distances[neigh] = distance
+                        heapq.heappush(heap, (distance, neigh))
                         
+        minimum_time =  max(distances.values())
         
-        if len(visited) < n:
+        if minimum_time == float("inf"):
             return -1
-        else:
-            return res_cost
+        return minimum_time
