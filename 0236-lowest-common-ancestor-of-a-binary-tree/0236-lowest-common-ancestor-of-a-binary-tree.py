@@ -10,24 +10,18 @@ class Solution:
         
         def dfs(root):
             
-            #if either p or q are found return thar root
+            if not root:
+                return None
+            
             if root == p or root == q:
                 return root
             
-            #search to the left and right until u get either p or q
-            left = None
-            right = None
-            if root.left:
-                left = dfs(root.left)
-                
-            if root.right:
-                right = dfs(root.right)
-                
-             # both are found and have same parent
+            left = dfs(root.left)
+            right  = dfs(root.right)
+            
             if left and right:
                 return root
             
-            #one of them has found or both aren't found
             return left or right
-        
+            
         return dfs(root)
