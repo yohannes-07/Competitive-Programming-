@@ -1,16 +1,33 @@
 class Solution:
     def numTeams(self, rating: List[int]) -> int:
-        upper_dps = [0 for _ in range(len(rating))]
-        lower_dps = [0 for _ in range(len(rating))]
+        # Math probability multiplication rule
         
-        count = 0
-        for i in range(len(rating)):
+        n = len(rating)
+        teams = 0
+        
+        for i in range(1, n-1):
+            leftLess = 0
+            rightGreater = 0
+            
+            leftGreater = 0
+            rightLess = 0
+            
             for j in range(i):
-                if rating[j] < rating[i]:
-                    count += upper_dps[j]
-                    upper_dps[i] += 1
-                else:
-                    count += lower_dps[j]
-                    lower_dps[i] += 1
+                if rating[i] > rating[j]:
+                    leftLess += 1
                     
-        return count
+                elif rating[i] < rating[j]:
+                    leftGreater += 1
+                    
+            for j in range(i+1, n):
+                if rating[i] < rating[j]:
+                    rightGreater += 1
+                    
+                elif rating[i] > rating[j]:
+                    rightLess += 1
+                    
+            teams += (leftLess * rightGreater) + (leftGreater * rightLess)
+            
+        return teams
+                    
+        
