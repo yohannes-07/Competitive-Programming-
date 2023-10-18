@@ -22,15 +22,11 @@ class Solution:
             yrep = find(y)
                 
             if xrep < yrep:
-                temp = rep[y]
-                rep[y] = xrep
-                rep[temp] = xrep
+                rep[yrep] = xrep
+                
             
             else:
-                temp = rep[x]
-                rep[x] = yrep
-                rep[temp] = yrep
-                
+                rep[xrep] = yrep
             
         for a, b in zip(s1, s2):
             union(a, b)
